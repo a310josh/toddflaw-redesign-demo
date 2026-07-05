@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog | Law Offices of Todd M. Friedman, P.C.</title>
+<meta name="description" content="Plain-English guidance on employment law, consumer protection, and class actions from attorneys who litigate these cases every day.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============ TMF DESIGN SYSTEM v2 — Law Offices of Todd M. Friedman ============ */
+:root{
+  --navy:#001f42; --navy-deep:#00152e; --navy-soft:#0a2b52;
+  --slate:#45556c; --slate-dark:#1d293d;
+  --gold:#f1c30e; --gold-deep:#c79f06;
+  --bone:#f7f5ef; --sand:#efeade; --white:#fffdf9;
+  --line:rgba(0,31,66,.13); --line-light:rgba(255,255,255,.15);
+  --ease:cubic-bezier(.22,1,.36,1);
+  --font-display:'Archivo',sans-serif; --font-body:'Inter',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);color:var(--slate-dark);background:var(--white);line-height:1.6;-webkit-font-smoothing:antialiased}
+::selection{background:var(--gold);color:var(--navy)}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+h1,h2,h3,h4{font-family:var(--font-display);color:var(--navy);line-height:1.04;letter-spacing:-.02em}
+.container{max-width:1200px;margin:0 auto;padding:0 24px}
+.eyebrow{font-family:var(--font-display);font-weight:700;font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-deep);display:inline-flex;align-items:center;gap:12px}
+.eyebrow::before{content:"";width:32px;height:3px;background:var(--gold)}
+.on-dark .eyebrow{color:var(--gold)}
+.h-xl{font-weight:900;font-size:clamp(2.6rem,6vw,4.4rem);text-transform:uppercase}
+.h-lg{font-weight:900;font-size:clamp(2rem,4.4vw,3.2rem);text-transform:uppercase}
+.h-md{font-weight:800;font-size:clamp(1.3rem,2.4vw,1.7rem)}
+.lead{font-size:1.12rem;color:var(--slate);max-width:62ch}
+.on-dark h1,.on-dark h2,.on-dark h3{color:var(--white)}
+.on-dark .lead{color:rgba(255,255,255,.75)}
+.gold{color:var(--gold)}
+section{padding:96px 0}
+.bg-bone{background:var(--bone)}
+.bg-sand{background:var(--sand)}
+/* Text link underline animation */
+.u-link{font-weight:700;color:var(--navy);background-image:linear-gradient(var(--gold),var(--gold));background-size:0% 2px;background-position:0 100%;background-repeat:no-repeat;transition:background-size .4s var(--ease);padding-bottom:3px}
+.u-link:hover{background-size:100% 2px}
+/* Grain (media surfaces only) */
+.grain::before{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;opacity:.5;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .05 0'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E")}
+/* Buttons */
+.btn{position:relative;display:inline-flex;align-items:center;gap:10px;font-family:var(--font-display);font-weight:700;font-size:.92rem;letter-spacing:.08em;text-transform:uppercase;padding:18px 34px;border:2px solid var(--gold);cursor:pointer;overflow:hidden;transition:color .35s var(--ease);isolation:isolate;background:transparent}
+.btn::after{content:"";position:absolute;inset:0;background:var(--gold);z-index:-1;transform:scaleX(0);transform-origin:right;transition:transform .4s var(--ease)}
+.btn:hover::after{transform:scaleX(1);transform-origin:left}
+.btn-solid{background:var(--gold);color:var(--navy)}
+.btn-solid::after{background:var(--white)}
+.btn-outline{color:var(--white)}
+.btn-outline:hover{color:var(--navy)}
+.btn-outline-dark{color:var(--navy)}
+.btn .arrow{transition:transform .35s var(--ease)}
+.btn:hover .arrow{transform:translateX(5px)}
+/* Header */
+.header{position:fixed;top:0;left:0;right:0;z-index:100;transition:background .35s,box-shadow .35s;background:linear-gradient(rgba(0,21,46,.82),rgba(0,21,46,0))}
+.header-inner{display:flex;align-items:center;justify-content:space-between;padding:18px 32px;transition:padding .35s var(--ease)}
+.header.scrolled{background:var(--navy-deep);box-shadow:0 8px 32px rgba(0,10,25,.35)}
+.header.scrolled .header-inner{padding:11px 32px}
+.header.solid{background:var(--navy-deep)}
+.logo img{height:44px;width:auto;transition:height .35s var(--ease)}
+.header.scrolled .logo img{height:36px}
+.nav{display:flex;align-items:center;gap:6px}
+.nav > li{position:relative}
+.nav > li > a{display:block;padding:10px 14px;color:rgba(255,255,255,.85);font-family:var(--font-display);font-weight:600;font-size:.88rem;letter-spacing:.06em;text-transform:uppercase;transition:color .25s}
+.nav > li > a:hover,.nav > li > a.active{color:var(--gold)}
+.nav .caret{display:inline-block;margin-left:5px;font-size:.6rem;transition:transform .3s var(--ease)}
+.nav li:hover .caret{transform:rotate(180deg)}
+.dropdown{position:absolute;top:100%;left:0;min-width:280px;background:var(--white);border-top:3px solid var(--gold);box-shadow:0 24px 48px rgba(0,15,35,.25);opacity:0;visibility:hidden;transform:translateY(12px);transition:all .3s var(--ease);padding:10px 0}
+.nav li:hover .dropdown{opacity:1;visibility:visible;transform:translateY(0)}
+.dropdown a{display:block;padding:11px 22px;font-size:.92rem;font-weight:500;color:var(--slate-dark);transition:all .2s}
+.dropdown a:hover{background:var(--bone);color:var(--navy);padding-left:28px}
+.dropdown .dd-label{padding:12px 22px 6px;font-size:.7rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-deep)}
+.header-cta{display:flex;align-items:center;gap:18px}
+.header-phone{color:var(--white);font-family:var(--font-display);font-weight:700;font-size:1rem;letter-spacing:.03em;transition:color .25s}
+.header-phone:hover{color:var(--gold)}
+.btn-header{padding:13px 24px;font-size:.8rem}
+.hamburger{display:none;background:none;border:none;cursor:pointer;width:44px;height:44px;position:relative;z-index:210}
+.hamburger span{display:block;width:26px;height:2.5px;background:var(--white);margin:6px auto;transition:all .35s var(--ease)}
+.hamburger.open span:nth-child(1){transform:translateY(8.5px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-8.5px) rotate(-45deg)}
+.mobile-nav{position:fixed;inset:0;background:var(--navy-deep);z-index:200;display:flex;flex-direction:column;justify-content:center;padding:48px;transform:translateX(100%);transition:transform .5s var(--ease)}
+.mobile-nav.open{transform:translateX(0)}
+.mobile-nav a{color:var(--white);font-family:var(--font-display);font-weight:800;font-size:1.6rem;text-transform:uppercase;padding:12px 0;opacity:0;transform:translateY(20px);transition:all .4s var(--ease)}
+.mobile-nav.open a{opacity:1;transform:translateY(0)}
+.mobile-nav a:hover{color:var(--gold)}
+/* Page hero with imagery */
+.page-hero{position:relative;background:var(--navy-deep);padding:190px 0 90px;overflow:hidden}
+.page-hero .hero-bg{position:absolute;inset:0}
+.page-hero .hero-bg img{width:100%;height:100%;object-fit:cover;filter:saturate(.7)}
+.page-hero .hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,rgba(0,21,46,.94) 25%,rgba(0,21,46,.72) 60%,rgba(0,21,46,.45))}
+.page-hero .container{position:relative;z-index:3}
+.breadcrumb{font-size:.82rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:22px}
+.breadcrumb a{color:rgba(255,255,255,.55);transition:color .25s}
+.breadcrumb a:hover{color:var(--gold)}
+.breadcrumb .sep{margin:0 10px;color:var(--gold)}
+/* Reveal animations */
+.reveal{opacity:0;transform:translateY(36px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-stagger > *{opacity:0;transform:translateY(28px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.reveal-stagger.visible > *{opacity:1;transform:translateY(0)}
+@media(prefers-reduced-motion:reduce){
+  .reveal,.reveal-stagger>*{opacity:1;transform:none;transition:none}
+  *{animation-duration:.01ms !important}
+}
+/* Stats */
+.stats{background:var(--navy);padding:0}
+.stats.light{background:var(--bone);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr)}
+.stat{padding:52px 32px;border-left:1px solid var(--line-light)}
+.stats.light .stat{border-left-color:var(--line)}
+.stat:first-child{border-left:none}
+.stat-num{font-family:var(--font-display);font-weight:900;font-size:clamp(2.2rem,4vw,3.2rem);color:var(--gold);letter-spacing:-.02em;line-height:1;font-variant-numeric:tabular-nums}
+.stats.light .stat-num{color:var(--navy)}
+.stat-label{margin-top:10px;font-size:.84rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.6)}
+.stats.light .stat-label{color:var(--slate)}
+/* Marquee */
+.marquee-band{background:var(--gold);padding:16px 0;overflow:hidden}
+.marquee-track{display:flex;width:max-content;animation:marquee 36s linear infinite}
+.marquee-band:hover .marquee-track{animation-play-state:paused}
+.marquee-track span{font-family:var(--font-display);font-weight:800;font-size:1rem;letter-spacing:.1em;text-transform:uppercase;color:var(--navy);padding:0 34px;white-space:nowrap;display:flex;align-items:center;gap:34px}
+.marquee-track span::after{content:"◆";font-size:.6rem}
+@keyframes marquee{to{transform:translateX(-50%)}}
+/* Logo wall (associations + awards) */
+.logo-wall{background:var(--white);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:56px 0}
+.logo-wall .lw-label{text-align:center;font-family:var(--font-display);font-weight:700;font-size:.75rem;letter-spacing:.26em;text-transform:uppercase;color:var(--slate);margin-bottom:38px}
+.lw-grid{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:20px 56px}
+.lw-grid img{height:64px;width:auto;filter:brightness(0) opacity(.62);transition:filter .35s,transform .35s var(--ease)}
+.lw-grid img:hover{filter:brightness(0) opacity(1);transform:translateY(-4px)}
+.lw-grid img.tall{height:86px}
+/* Zig-zag feature rows */
+.zig{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--line);margin-top:56px}
+.zig-row{display:contents}
+.zig-media{position:relative;min-height:340px;overflow:hidden}
+.zig-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(.75);transition:transform 1.2s var(--ease),filter .6s}
+.zig-media::after{content:"";position:absolute;inset:0;background:linear-gradient(15deg,rgba(0,31,66,.42),transparent 55%)}
+.zig-body:hover ~ .zig-media img, .zig-media:hover img{transform:scale(1.045);filter:saturate(1)}
+.zig-body{padding:56px;display:flex;flex-direction:column;justify-content:center;background:var(--white);border-top:1px solid var(--line)}
+.zig-row:first-of-type .zig-body{border-top:none}
+.zig-body h3{font-size:1.5rem;font-weight:800;margin-bottom:12px}
+.zig-body p{color:var(--slate);max-width:48ch}
+.zig-body .pa-link{margin-top:22px}
+.pa-link{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-display);font-weight:700;font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;color:var(--navy);transition:color .35s,gap .3s}
+.pa-link:hover{color:var(--gold-deep);gap:14px}
+/* Compact practice chips row (secondary areas) */
+.pa-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:20px}
+.pa-mini{border:1.5px solid var(--line);background:var(--white);padding:26px;transition:border-color .3s,transform .3s var(--ease);position:relative}
+.pa-mini::after{content:"→";position:absolute;top:22px;right:22px;color:var(--gold-deep);opacity:0;transform:translateX(-6px);transition:all .3s var(--ease)}
+.pa-mini:hover{border-color:var(--gold);transform:translateY(-4px)}
+.pa-mini:hover::after{opacity:1;transform:none}
+.pa-mini h3{font-size:1.02rem;font-weight:800;margin-bottom:6px;padding-right:20px}
+.pa-mini p{font-size:.86rem;color:var(--slate)}
+/* ===== CASE RESULT DESIGN A: Verdict stamp (inline callout) ===== */
+.verdict{display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:center;background:var(--bone);border-left:5px solid var(--gold);padding:34px 38px;margin:44px 0}
+.verdict .v-amt{font-family:var(--font-display);font-weight:900;font-size:clamp(2.2rem,4vw,3.2rem);color:var(--navy);line-height:1;font-variant-numeric:tabular-nums;white-space:nowrap}
+.verdict .v-amt small{display:block;font-size:.72rem;font-weight:700;letter-spacing:.22em;color:var(--gold-deep);margin-top:6px}
+.verdict .v-body strong{display:block;font-family:var(--font-display);font-weight:800;color:var(--navy);font-size:1.05rem;margin-bottom:4px}
+.verdict .v-body p{font-size:.94rem;color:var(--slate);max-width:58ch}
+/* ===== CASE RESULT DESIGN B: Docket cards (asymmetric grid) ===== */
+.docket-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr;grid-auto-rows:minmax(180px,auto);gap:18px;margin-top:56px}
+.docket{position:relative;background:var(--white);border:1px solid var(--line);padding:34px;overflow:hidden;transition:transform .4s var(--ease),box-shadow .4s;display:flex;flex-direction:column;justify-content:flex-end;min-height:220px}
+.docket:hover{transform:translateY(-6px);box-shadow:0 22px 44px rgba(0,15,35,.1)}
+.docket::before{content:"";position:absolute;top:0;left:0;width:100%;height:4px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .45s var(--ease)}
+.docket:hover::before{transform:scaleX(1)}
+.docket .ghost{position:absolute;top:-14px;right:-6px;font-family:var(--font-display);font-weight:900;font-size:5.2rem;color:var(--navy);opacity:.06;line-height:1;pointer-events:none;letter-spacing:-.04em}
+.docket .d-tag{font-size:.7rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:8px}
+.docket .d-amt{font-family:var(--font-display);font-weight:900;font-size:2.3rem;color:var(--navy);line-height:1;font-variant-numeric:tabular-nums}
+.docket.feature .d-amt{font-size:3.4rem}
+.docket p{font-size:.92rem;color:var(--slate);margin-top:10px;max-width:44ch}
+.docket.feature{background:var(--navy);border-color:var(--navy)}
+.docket.feature .d-amt{color:var(--gold)}
+.docket.feature .ghost{color:var(--white);opacity:.05}
+.docket.feature p{color:rgba(255,255,255,.72)}
+/* ===== TESTIMONIAL DESIGN A: Spotlight quote ===== */
+.spotlight{background:var(--sand);padding:56px 60px;position:relative;margin:44px 0;overflow:hidden}
+.spotlight::before{content:"“";position:absolute;top:-30px;left:26px;font-family:var(--font-display);font-weight:900;font-size:11rem;color:var(--gold);opacity:.55;line-height:1}
+.spotlight blockquote{position:relative;font-family:var(--font-display);font-weight:600;font-size:clamp(1.15rem,2.2vw,1.5rem);color:var(--navy);line-height:1.5;max-width:56ch;margin-left:56px}
+.spotlight .s-meta{display:flex;align-items:center;gap:16px;margin:26px 0 0 56px}
+.s-avatar{width:48px;height:48px;background:var(--navy);color:var(--gold);display:grid;place-items:center;font-family:var(--font-display);font-weight:800;font-size:1rem;border-radius:50%;flex:none}
+.s-meta .s-who strong{display:block;font-family:var(--font-display);font-weight:800;color:var(--navy);font-size:.98rem}
+.s-meta .s-who span{font-size:.82rem;color:var(--slate)}
+.s-stars{margin-left:auto;color:var(--gold-deep);letter-spacing:4px;font-size:1.05rem;white-space:nowrap}
+/* ===== TESTIMONIAL DESIGN B: Review rail (drag/snap) ===== */
+.rail-wrap{position:relative;margin-top:52px}
+.rail{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:18px;cursor:grab;scrollbar-width:none}
+.rail::-webkit-scrollbar{display:none}
+.rail.dragging{cursor:grabbing;scroll-snap-type:none}
+.review{flex:0 0 360px;scroll-snap-align:start;background:var(--white);border:1px solid var(--line);padding:30px;display:flex;flex-direction:column;gap:14px;transition:border-color .3s}
+.review:hover{border-color:var(--gold)}
+.review .r-stars{color:var(--gold-deep);letter-spacing:4px;font-size:1rem}
+.review p{font-size:.96rem;color:var(--slate-dark);line-height:1.55;flex:1}
+.review .r-who{display:flex;align-items:center;gap:12px;border-top:1px solid var(--line);padding-top:16px}
+.review .r-who .s-avatar{width:40px;height:40px;font-size:.85rem}
+.review .r-who strong{font-family:var(--font-display);font-weight:800;font-size:.92rem;color:var(--navy);display:block}
+.review .r-who span{font-size:.78rem;color:var(--slate)}
+.rail-nav{display:flex;gap:10px;justify-content:flex-end;margin-top:6px}
+.rail-btn{width:46px;height:46px;border:1.5px solid var(--line);background:var(--white);cursor:pointer;font-size:1.05rem;color:var(--navy);transition:all .3s var(--ease);display:grid;place-items:center}
+.rail-btn:hover{background:var(--gold);border-color:var(--gold)}
+/* Chips */
+.chip{background:var(--white);border:1.5px solid var(--line);padding:11px 22px;font-family:var(--font-display);font-weight:700;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;color:var(--slate);cursor:pointer;transition:all .3s var(--ease)}
+.chip:hover{border-color:var(--gold);color:var(--navy)}
+.chip.active{background:var(--navy);border-color:var(--navy);color:var(--gold)}
+/* Accordion */
+.accordion{border-top:1px solid var(--line)}
+.acc-item{border-bottom:1px solid var(--line)}
+.acc-head{width:100%;display:flex;justify-content:space-between;align-items:center;gap:24px;padding:26px 4px;background:none;border:none;cursor:pointer;text-align:left;font-family:var(--font-display);font-weight:700;font-size:1.15rem;color:var(--navy);transition:color .25s}
+.acc-head:hover{color:var(--gold-deep)}
+.acc-icon{flex:none;width:34px;height:34px;border:2px solid var(--navy);display:grid;place-items:center;font-size:1.1rem;font-weight:700;transition:all .35s var(--ease)}
+.acc-item.open .acc-icon{background:var(--gold);border-color:var(--gold);transform:rotate(45deg)}
+.acc-body{max-height:0;overflow:hidden;transition:max-height .5s var(--ease)}
+.acc-body p{padding:0 4px 28px;color:var(--slate);max-width:70ch}
+/* Tabs */
+.tabs{display:flex;gap:4px;border-bottom:2px solid var(--line);margin-bottom:44px;flex-wrap:wrap}
+.tab-btn{background:none;border:none;cursor:pointer;font-family:var(--font-display);font-weight:700;font-size:.95rem;letter-spacing:.06em;text-transform:uppercase;color:var(--slate);padding:16px 24px;position:relative;transition:color .25s}
+.tab-btn::after{content:"";position:absolute;left:0;bottom:-2px;width:100%;height:3px;background:var(--gold);transform:scaleX(0);transition:transform .35s var(--ease)}
+.tab-btn.active{color:var(--navy)}
+.tab-btn.active::after{transform:scaleX(1)}
+.tab-panel{display:none;animation:fadeSlide .5s var(--ease)}
+.tab-panel.active{display:block}
+@keyframes fadeSlide{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+/* Forms */
+.form-card{background:var(--white);padding:44px;border-top:5px solid var(--gold);box-shadow:0 32px 64px rgba(0,10,25,.35)}
+.form-card h3{font-size:1.4rem;font-weight:800;margin-bottom:6px}
+.form-card .form-sub{font-size:.9rem;color:var(--slate);margin-bottom:26px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form-grid .full{grid-column:1/-1}
+.field input,.field select,.field textarea{width:100%;padding:14px 16px;border:1.5px solid var(--line);font-family:var(--font-body);font-size:.95rem;color:var(--slate-dark);background:var(--bone);transition:border-color .25s,background .25s;outline:none}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--gold);background:var(--white)}
+.field label{display:block;font-size:.78rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--navy);margin-bottom:6px}
+.form-note{font-size:.75rem;color:var(--slate);margin-top:14px}
+/* CTA band */
+.cta-band{background:var(--navy);position:relative;overflow:hidden}
+.cta-band::before{content:"";position:absolute;right:-140px;top:-140px;width:480px;height:480px;border:2px solid rgba(241,195,14,.15);border-radius:50%}
+.cta-band::after{content:"";position:absolute;right:-60px;top:-60px;width:480px;height:480px;border:2px solid rgba(241,195,14,.08);border-radius:50%}
+.cta-inner{display:grid;grid-template-columns:1.2fr 1fr;gap:64px;align-items:center;position:relative;z-index:2}
+/* ===== OFFICE EXPLORER (pre-footer) ===== */
+.offices-x{background:var(--navy-deep);padding:0;display:grid;grid-template-columns:1fr 1.15fr;min-height:520px}
+.ox-list{padding:88px 56px 88px max(24px,calc((100vw - 1200px)/2 + 24px));display:flex;flex-direction:column;justify-content:center}
+.ox-list .eyebrow{color:var(--gold);margin-bottom:28px}
+.ox-item{display:grid;grid-template-columns:1fr auto;gap:4px 24px;align-items:center;padding:24px 20px;border-top:1px solid var(--line-light);cursor:pointer;position:relative;transition:background .3s,padding-left .35s var(--ease)}
+.ox-item:last-child{border-bottom:1px solid var(--line-light)}
+.ox-item::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--gold);transform:scaleY(0);transition:transform .35s var(--ease)}
+.ox-item.active{background:rgba(255,255,255,.05);padding-left:30px}
+.ox-item.active::before{transform:scaleY(1)}
+.ox-item h3{font-size:1.3rem;font-weight:800;color:rgba(255,255,255,.85);text-transform:uppercase;transition:color .3s}
+.ox-item.active h3{color:var(--gold)}
+.ox-item address{grid-column:1;font-style:normal;font-size:.88rem;color:rgba(255,255,255,.55);line-height:1.55}
+.ox-item .ox-tel{grid-row:1/3;font-family:var(--font-display);font-weight:700;color:rgba(255,255,255,.7);font-size:.95rem;transition:color .3s}
+.ox-item.active .ox-tel{color:var(--white)}
+.ox-media{position:relative;overflow:hidden;min-height:400px}
+.ox-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.06);transition:opacity .7s var(--ease),transform 6s linear;filter:saturate(.75)}
+.ox-media img.active{opacity:1;transform:scale(1)}
+.ox-media::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--navy-deep) 0%,rgba(0,21,46,.25) 40%,rgba(0,21,46,.05))}
+/* Footer */
+.footer{background:var(--navy-deep);color:rgba(255,255,255,.65);padding:72px 0 0;border-top:1px solid var(--line-light)}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:48px;padding-bottom:56px}
+.footer h4{color:var(--white);font-size:.85rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;margin-bottom:22px}
+.footer a{display:block;padding:5px 0;font-size:.92rem;transition:color .25s,padding-left .25s}
+.footer a:hover{color:var(--gold);padding-left:6px}
+.footer-logo img{height:44px;margin-bottom:20px}
+.footer-desc{font-size:.92rem;max-width:36ch}
+.footer-bottom{border-top:1px solid var(--line-light);padding:26px 0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;font-size:.82rem}
+.footer-bottom .links{display:flex;gap:24px}
+.footer-bottom a{display:inline;padding:0}
+/* Back to top */
+.to-top{position:fixed;bottom:28px;right:28px;width:52px;height:52px;background:var(--gold);color:var(--navy);border:none;font-size:1.2rem;cursor:pointer;opacity:0;visibility:hidden;transform:translateY(16px);transition:all .4s var(--ease);z-index:90;font-family:var(--font-display);font-weight:800}
+.to-top.show{opacity:1;visibility:visible;transform:none}
+.to-top:hover{background:var(--white)}
+@media(max-width:1024px){
+  .nav,.header-cta .header-phone{display:none}
+  .hamburger{display:block}
+  .stats-grid{grid-template-columns:1fr 1fr}
+  .stat{border-left:none;border-top:1px solid var(--line-light)}
+  .stats.light .stat{border-top-color:var(--line)}
+  .cta-inner{grid-template-columns:1fr;gap:56px}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .zig{grid-template-columns:1fr}
+  .zig-media{min-height:240px}
+  .pa-row{grid-template-columns:1fr 1fr}
+  .docket-grid{grid-template-columns:1fr 1fr}
+  .offices-x{grid-template-columns:1fr}
+  .ox-media{min-height:300px;order:-1}
+  .ox-list{padding:64px 24px}
+  .review{flex-basis:300px}
+}
+@media(max-width:640px){
+  section{padding:64px 0}
+  .form-grid,.footer-grid,.pa-row,.docket-grid{grid-template-columns:1fr}
+  .page-hero{padding:150px 0 64px}
+  .verdict{grid-template-columns:1fr;gap:16px}
+  .spotlight{padding:44px 28px}
+  .spotlight blockquote,.spotlight .s-meta{margin-left:0}
+  .zig-body{padding:36px 26px}
+}
+
+</style>
+<style>
+/* Blog toolbar */
+.blog-toolbar{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;margin-bottom:44px}
+.blog-filters{display:flex;gap:10px;flex-wrap:wrap}
+.blog-search{position:relative}
+.blog-search input{width:280px;padding:13px 44px 13px 18px;border:1.5px solid var(--line);background:var(--white);font-family:var(--font-body);font-size:.93rem;outline:none;transition:border-color .25s}
+.blog-search input:focus{border-color:var(--gold)}
+.blog-search::after{content:"⌕";position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:1.3rem;color:var(--slate)}
+/* Featured post */
+.featured{display:grid;grid-template-columns:1.15fr 1fr;background:var(--navy);margin-bottom:56px;overflow:hidden;min-height:400px}
+.featured-media{position:relative;overflow:hidden}
+.featured-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(.8);transition:transform 1.4s var(--ease)}
+.featured:hover .featured-media img{transform:scale(1.05)}
+.featured-media::after{content:"";position:absolute;inset:0;background:linear-gradient(80deg,transparent 55%,rgba(0,31,66,.55))}
+.featured-body{padding:52px;display:flex;flex-direction:column;justify-content:center}
+.featured .cat-tag{background:var(--gold);color:var(--navy);border:none}
+.featured h2{color:var(--white);font-size:clamp(1.5rem,3vw,2.1rem);font-weight:800;margin:18px 0 14px;line-height:1.15}
+.featured p{color:rgba(255,255,255,.72);margin-bottom:26px}
+.featured .date{color:rgba(255,255,255,.5);font-size:.85rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+/* Post grid */
+.post-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.post-card{background:var(--white);border:1px solid var(--line);display:flex;flex-direction:column;transition:transform .4s var(--ease),box-shadow .4s;position:relative;overflow:hidden}
+.post-card:hover{transform:translateY(-8px);box-shadow:0 24px 48px rgba(0,15,35,.12)}
+.post-card::before{content:"";position:absolute;top:0;left:0;width:100%;height:4px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .45s var(--ease);z-index:2}
+.post-card:hover::before{transform:scaleX(1)}
+.pc-media{height:180px;overflow:hidden;position:relative}
+.pc-media img{width:100%;height:100%;object-fit:cover;filter:saturate(.75);transition:transform .9s var(--ease),filter .5s}
+.post-card:hover .pc-media img{transform:scale(1.06);filter:saturate(1)}
+.pc-body{padding:26px 26px 30px;display:flex;flex-direction:column;flex:1}
+.cat-tag{display:inline-block;font-family:var(--font-display);font-weight:700;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;background:var(--bone);color:var(--navy);border:1px solid var(--line);padding:6px 12px;width:fit-content}
+.pc-body h3{font-size:1.1rem;font-weight:800;line-height:1.3;margin:14px 0 10px}
+.pc-body h3 a{transition:color .25s}
+.pc-body h3 a:hover{color:var(--gold-deep)}
+.pc-date{font-size:.8rem;color:var(--slate);font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-top:auto;padding-top:16px;display:flex;justify-content:space-between;align-items:center}
+.pc-date .rm{font-family:var(--font-display);font-weight:700;color:var(--navy);display:inline-flex;gap:6px;transition:gap .3s,color .3s}
+.post-card:hover .rm{gap:11px;color:var(--gold-deep)}
+.no-results{text-align:center;padding:64px 0;color:var(--slate);font-size:1.05rem;display:none}
+/* Pagination */
+.pagination{display:flex;justify-content:center;gap:8px;margin-top:64px}
+.page-btn{width:48px;height:48px;border:1.5px solid var(--line);background:var(--white);font-family:var(--font-display);font-weight:700;font-size:.95rem;color:var(--slate);cursor:pointer;transition:all .3s var(--ease);display:grid;place-items:center}
+.page-btn:hover{border-color:var(--gold);color:var(--navy)}
+.page-btn.active{background:var(--navy);border-color:var(--navy);color:var(--gold)}
+.page-btn.wide{width:auto;padding:0 20px}
+@media(max-width:1024px){.post-grid{grid-template-columns:1fr 1fr}.featured{grid-template-columns:1fr}.featured-media{min-height:220px}}
+@media(max-width:640px){.post-grid{grid-template-columns:1fr}.blog-search input{width:100%}.blog-toolbar{flex-direction:column;align-items:stretch}}
+</style>
+</head>
+<body>
+
+<header class="header solid" id="header">
+  <div class="header-inner">
+    <a href="index.html" class="logo"><img src="https://toddflaw.com/wp-content/uploads/2025/04/Todd-M-Friedman-Logo-2-TMF-Logo-Full-Wide-light-letter-no-bg.png" alt="Law Offices of Todd M. Friedman, P.C."></a>
+    <ul class="nav">
+      <li><a href="index.html">Home</a></li>
+      <li>
+        <a href="about.html">About <span class="caret">▾</span></a>
+        <div class="dropdown">
+          <div class="dd-label">Attorneys</div>
+          <a href="attorney-todd-michael-friedman.html">Todd M. Friedman</a>
+          <a href="about.html#team">All Attorneys</a>
+        </div>
+      </li>
+      <li>
+        <a href="employment-law.html">Practice Areas <span class="caret">▾</span></a>
+        <div class="dropdown">
+          <div class="dd-label">Employment Law</div>
+          <a href="employment-law.html">Employment Law Hub</a>
+          <a href="employment-law.html#areas">Workplace Discrimination</a>
+          <div class="dd-label">Consumer Protection</div>
+          <a href="index.html#results">Consumer Rights</a>
+          <a href="index.html#results">Class Actions</a>
+        </div>
+      </li>
+      <li><a href="index.html#results">Results</a></li>
+      <li><a href="blog.html" class="active">Blog</a></li>
+    </ul>
+    <div class="header-cta">
+      <a href="tel:323-690-1688" class="header-phone">323-690-1688</a>
+      <a href="index.html#contact" class="btn btn-solid btn-header">Free Case Evaluation</a>
+      <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+<nav class="mobile-nav" id="mobileNav">
+  <a href="index.html">Home</a><a href="about.html">About</a><a href="employment-law.html">Practice Areas</a><a href="blog.html">Blog</a><a href="index.html#contact" class="gold">Free Case Evaluation</a>
+</nav>
+
+<!-- PAGE HERO with imagery -->
+<section class="page-hero on-dark grain">
+  <div class="hero-bg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Chicago_River_ferry_b.jpg/1920px-Chicago_River_ferry_b.jpg" alt=""></div>
+  <div class="container">
+    <div class="breadcrumb reveal visible"><a href="index.html">Home</a><span class="sep">/</span>Blog</div>
+    <h1 class="h-xl reveal visible">Know your<br><span class="gold">rights.</span></h1>
+    <p class="lead reveal visible" style="margin-top:24px">Plain-English guidance on employment law, consumer protection, and class actions from attorneys who litigate these cases every day.</p>
+  </div>
+</section>
+
+<!-- BLOG -->
+<section class="bg-bone">
+  <div class="container">
+
+    <!-- Featured -->
+    <a href="#" class="featured reveal">
+      <div class="featured-media"><img src="https://toddflaw.com/wp-content/uploads/2025/03/Todd-Friedman-Practice-Area.jpg" alt="Class action roundup"></div>
+      <div class="featured-body">
+        <span class="cat-tag">Featured · Class Action</span>
+        <h2>Class Action Lawsuits [Roundup]</h2>
+        <p>New investor cases, consumer defect claims, and data breach settlements are being filed almost daily, and many carry strict deadlines for consumers and shareholders who want to participate.</p>
+        <span class="date">July 3, 2026 · 6 min read</span>
+      </div>
+    </a>
+
+    <!-- Toolbar -->
+    <div class="blog-toolbar reveal">
+      <div class="blog-filters" id="blogFilters">
+        <button class="chip active" data-cat="all">All</button>
+        <button class="chip" data-cat="Employment Law">Employment Law</button>
+        <button class="chip" data-cat="Consumer Rights">Consumer Rights</button>
+        <button class="chip" data-cat="Class Action">Class Action</button>
+        <button class="chip" data-cat="Firm News">Firm News</button>
+      </div>
+      <div class="blog-search"><input type="search" id="blogSearch" placeholder="Search articles..." aria-label="Search articles"></div>
+    </div>
+
+    <!-- Posts (rendered by JS) -->
+    <div class="post-grid" id="postGrid"></div>
+    <div class="no-results" id="noResults">No articles match your search. Try a different term or category.</div>
+
+    <!-- Pagination -->
+    <div class="pagination reveal">
+      <button class="page-btn active">1</button>
+      <button class="page-btn">2</button>
+      <button class="page-btn">3</button>
+      <button class="page-btn" disabled style="border:none;background:none">…</button>
+      <button class="page-btn">36</button>
+      <button class="page-btn wide">Next →</button>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-band on-dark" id="contact">
+  <div class="container">
+    <div class="cta-inner">
+      <div class="reveal">
+        <span class="eyebrow">Have a Case?</span>
+        <h2 class="h-lg" style="margin:20px 0 24px">Reading is good.<br><span class="gold">Acting is better.</span></h2>
+        <p class="lead" style="margin-bottom:32px">If any of these articles sound like your situation, don't wait. Many claims carry strict deadlines, and consultations are free.</p>
+        <a href="tel:323-690-1688" class="btn btn-outline">Call 323-690-1688</a>
+      </div>
+      <div class="form-card reveal">
+        <h3>Schedule a Free Case Review</h3>
+        <p class="form-sub">Prompt, straightforward feedback. No obligation.</p>
+        <form class="form-grid" onsubmit="event.preventDefault();this.innerHTML='<p style=\'grid-column:1/-1;font-weight:700;color:var(--navy);padding:24px 0\'>✓ Thank you. We will be in touch shortly.</p>'">
+          <div class="field"><label>First Name</label><input type="text" required></div>
+          <div class="field"><label>Last Name</label><input type="text" required></div>
+          <div class="field"><label>Email</label><input type="email" required></div>
+          <div class="field"><label>Phone</label><input type="tel" required></div>
+          <div class="field full"><label>Message</label><textarea rows="3" required></textarea></div>
+          <div class="full"><button type="submit" class="btn btn-solid" style="width:100%;justify-content:center">Request Attorney Response <span class="arrow">→</span></button></div>
+          <p class="form-note full">By submitting, you agree to our Disclaimer and Privacy Policy.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OFFICE EXPLORER -->
+<section class="offices-x on-dark" id="offices">
+  <div class="ox-list">
+    <span class="eyebrow">Four Offices, One Standard</span>
+    <div class="ox-item active" tabindex="0">
+      <h3>Los Angeles</h3>
+      <a class="ox-tel" href="tel:818-619-3774">(818) 619-3774</a>
+      <address>23586 Calabasas Rd., Suite 105 · Calabasas, CA 91302</address>
+    </div>
+    <div class="ox-item" tabindex="0">
+      <h3>Cleveland</h3>
+      <a class="ox-tel" href="tel:216-284-7628">(216) 284-7628</a>
+      <address>600 Superior Ave E, Suite 1300 · Cleveland, OH 44114</address>
+    </div>
+    <div class="ox-item" tabindex="0">
+      <h3>Chicago</h3>
+      <a class="ox-tel" href="tel:312-815-2024">(312) 815-2024</a>
+      <address>555 Skokie Blvd., Suite 500 · Northbrook, IL 60062</address>
+    </div>
+    <div class="ox-item" tabindex="0">
+      <h3>King of Prussia</h3>
+      <a class="ox-tel" href="tel:610-665-3086">(610) 665-3086</a>
+      <address>840 First Ave, Suite 400 · King of Prussia, PA 19406</address>
+    </div>
+  </div>
+  <div class="ox-media">
+    <img class="active" src="https://toddflaw.com/wp-content/uploads/2021/02/view-of-los-angeles-skyline-at-sunset-PW3TEFM.jpg" alt="Los Angeles">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Cleveland_skyline_from_Lakewood_Park%2C_January_2026.jpg/1920px-Cleveland_skyline_from_Lakewood_Park%2C_January_2026.jpg" alt="Cleveland" loading="lazy">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Chicago_River_ferry_b.jpg/1920px-Chicago_River_ferry_b.jpg" alt="Chicago" loading="lazy">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Main_Street_WB_at_Town_Square_Place_King_of_Prussia_Town_Center.jpeg/1920px-Main_Street_WB_at_Town_Square_Place_King_of_Prussia_Town_Center.jpeg" alt="King of Prussia" loading="lazy">
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo"><img src="https://toddflaw.com/wp-content/uploads/2025/04/Todd-M-Friedman-Logo-2-TMF-Logo-Full-Wide-light-letter-no-bg.png" alt="TMF Law"></div>
+        <p class="footer-desc">A consumer protection and employment law firm serving California, Ohio, Pennsylvania, and Illinois. Free consultations, contingency representation.</p>
+      </div>
+      <div>
+        <h4>Practice Areas</h4>
+        <a href="employment-law.html">Employment Law</a>
+        <a href="index.html#results">Consumer Rights</a>
+        <a href="index.html#results">Class Actions</a>
+        <a href="#">Lemon Law</a>
+        <a href="#">Personal Injury</a>
+      </div>
+      <div>
+        <h4>Firm</h4>
+        <a href="about.html">About Us</a>
+        <a href="attorney-todd-michael-friedman.html">Attorneys</a>
+        <a href="index.html#results">Results</a>
+        <a href="blog.html">Blog</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div>
+        <h4>Talk to Us</h4>
+        <a href="tel:323-690-1688">323-690-1688</a>
+        <a href="#contact">Free Case Evaluation</a>
+        <a href="#offices">Office Locations</a>
+        <a href="https://www.linkedin.com/company/law-offices-of-tood-m-friedman-pc/">LinkedIn</a>
+        <a href="https://www.facebook.com/toddmfriedman">Facebook</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Law Offices of Todd M. Friedman, P.C. All Rights Reserved.</span>
+      <div class="links"><a href="#">Privacy Policy</a><a href="#">Disclaimer</a><a href="#">T&Cs</a><a href="#">Sitemap</a></div>
+    </div>
+  </div>
+</footer>
+
+<button class="to-top" id="toTop" aria-label="Back to top">↑</button>
+
+<script>
+/* ============ TMF shared interactions v2 ============ */
+(() => {
+  // Header state via sentinel (no scroll listener)
+  const header = document.getElementById('header');
+  const toTop = document.getElementById('toTop');
+  const sentinel = document.createElement('div');
+  sentinel.style.cssText = 'position:absolute;top:60px;left:0;width:1px;height:1px;pointer-events:none';
+  document.body.prepend(sentinel);
+  const headIO = new IntersectionObserver(([e]) => {
+    const past = !e.isIntersecting;
+    if (header) header.classList.toggle('scrolled', past);
+  });
+  headIO.observe(sentinel);
+  if (toTop) {
+    const topSentinel = document.createElement('div');
+    topSentinel.style.cssText = 'position:absolute;top:900px;left:0;width:1px;height:1px;pointer-events:none';
+    document.body.prepend(topSentinel);
+    new IntersectionObserver(([e]) => toTop.classList.toggle('show', !e.isIntersecting)).observe(topSentinel);
+    toTop.addEventListener('click', () => scrollTo({top:0, behavior:'smooth'}));
+  }
+
+  // Mobile nav
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobileNav');
+  if (hamburger && mobileNav) {
+    hamburger.addEventListener('click', () => {
+      const open = mobileNav.classList.toggle('open');
+      hamburger.classList.toggle('open', open);
+      document.body.style.overflow = open ? 'hidden' : '';
+      mobileNav.querySelectorAll('a').forEach((a,i) => a.style.transitionDelay = open ? (0.1 + i*0.06)+'s' : '0s');
+    });
+    mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      mobileNav.classList.remove('open'); hamburger.classList.remove('open'); document.body.style.overflow='';
+    }));
+  }
+
+  // Reveal on scroll
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, {threshold:.15});
+  document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => io.observe(el));
+
+  // Animated counters
+  const counterIO = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      counterIO.unobserve(e.target);
+      const el = e.target;
+      if (el.dataset.static) return;
+      const target = +el.dataset.count, prefix = el.dataset.prefix||'', suffix = el.dataset.suffix||'';
+      const dur = 1400, t0 = performance.now();
+      const tick = (t) => {
+        const p = Math.min((t - t0)/dur, 1);
+        const eased = 1 - Math.pow(1-p, 3);
+        el.textContent = prefix + Math.round(target * eased).toLocaleString() + suffix;
+        if (p < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    });
+  }, {threshold:.6});
+  document.querySelectorAll('.stat-num[data-count]').forEach(el => counterIO.observe(el));
+
+  // Marquee seamless loop
+  document.querySelectorAll('.marquee-track').forEach(t => t.innerHTML += t.innerHTML);
+
+  // Accordions
+  document.querySelectorAll('.accordion').forEach(acc => {
+    acc.querySelectorAll('.acc-item').forEach(item => {
+      const head = item.querySelector('.acc-head');
+      const body = item.querySelector('.acc-body');
+      head.addEventListener('click', () => {
+        const isOpen = item.classList.contains('open');
+        acc.querySelectorAll('.acc-item.open').forEach(o => {
+          o.classList.remove('open');
+          o.querySelector('.acc-body').style.maxHeight = null;
+        });
+        if (!isOpen) {
+          item.classList.add('open');
+          body.style.maxHeight = body.scrollHeight + 'px';
+        }
+      });
+    });
+  });
+
+  // Tabs
+  document.querySelectorAll('[data-tabs]').forEach(group => {
+    const btns = group.querySelectorAll('.tab-btn');
+    const panels = group.querySelectorAll('.tab-panel');
+    btns.forEach((btn, i) => btn.addEventListener('click', () => {
+      btns.forEach(b => b.classList.remove('active'));
+      panels.forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      panels[i].classList.add('active');
+    }));
+  });
+
+  // Office explorer (pre-footer): hover/focus swaps media
+  document.querySelectorAll('.offices-x').forEach(ox => {
+    const items = ox.querySelectorAll('.ox-item');
+    const imgs = ox.querySelectorAll('.ox-media img');
+    const activate = (i) => {
+      items.forEach((it, j) => it.classList.toggle('active', i === j));
+      imgs.forEach((im, j) => im.classList.toggle('active', i === j));
+    };
+    items.forEach((it, i) => {
+      it.addEventListener('mouseenter', () => activate(i));
+      it.addEventListener('focus', () => activate(i), true);
+      it.addEventListener('click', () => activate(i));
+    });
+  });
+
+  // Review rail: drag to scroll + arrow buttons
+  document.querySelectorAll('.rail-wrap').forEach(wrap => {
+    const rail = wrap.querySelector('.rail');
+    let down = false, startX = 0, startScroll = 0;
+    rail.addEventListener('pointerdown', e => { down = true; startX = e.clientX; startScroll = rail.scrollLeft; rail.classList.add('dragging'); rail.setPointerCapture(e.pointerId); });
+    rail.addEventListener('pointermove', e => { if (down) rail.scrollLeft = startScroll - (e.clientX - startX); });
+    ['pointerup','pointercancel'].forEach(ev => rail.addEventListener(ev, () => { down = false; rail.classList.remove('dragging'); }));
+    const card = () => rail.querySelector('.review')?.getBoundingClientRect().width + 18 || 378;
+    wrap.querySelector('[data-rail="prev"]')?.addEventListener('click', () => rail.scrollBy({left:-card(), behavior:'smooth'}));
+    wrap.querySelector('[data-rail="next"]')?.addEventListener('click', () => rail.scrollBy({left:card(), behavior:'smooth'}));
+  });
+})();
+
+</script>
+<script>
+// Image pool keyed to category for visual cohesion
+const IMG = {
+  la: "https://toddflaw.com/wp-content/uploads/2021/02/view-of-los-angeles-skyline-at-sunset-PW3TEFM.jpg",
+  work: "https://toddflaw.com/wp-content/uploads/2025/03/Todd-Friedman-Practice-Area.jpg",
+  chi: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Chicago_River_ferry_b.jpg/1920px-Chicago_River_ferry_b.jpg",
+  cle: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Cleveland_skyline_from_Lakewood_Park%2C_January_2026.jpg/1920px-Cleveland_skyline_from_Lakewood_Park%2C_January_2026.jpg",
+  todd: "https://toddflaw.com/wp-content/uploads/2025/03/Todd-headhsot-highres.jpg"
+};
+const posts = [
+  {t:"How to File a Discrimination Complaint: Step-by-Step", c:"Employment Law", d:"July 1, 2026", img:IMG.work},
+  {t:"How to File an FCRA Violation Lawsuit and Win Damages", c:"Consumer Rights", d:"June 30, 2026", img:IMG.la},
+  {t:"How to Sue a Credit Bureau for a Credit Report Error", c:"Consumer Rights", d:"June 20, 2026", img:IMG.cle},
+  {t:"Employment Discrimination Attorney: 9 Questions That Matter", c:"Employment Law", d:"June 13, 2026", img:IMG.work},
+  {t:"How to Find and Join a Class Action Lawsuit Today", c:"Class Action", d:"June 3, 2026", img:IMG.chi},
+  {t:"Grubhub Pays $24.75M to Settle Gig Worker Misclassification Case", c:"Class Action", d:"April 29, 2026", img:IMG.la},
+  {t:"How California Consumers Can Dispute Erroneous Negative Marks on Credit Reports", c:"Consumer Rights", d:"March 27, 2026", img:IMG.la},
+  {t:"Protecting Yourself from Identity Theft Credit Report Errors", c:"Consumer Rights", d:"March 24, 2026", img:IMG.cle},
+  {t:"Top 5 Signs You Need an Employment Attorney for Wrongful Termination", c:"Employment Law", d:"March 16, 2026", img:IMG.work},
+  {t:"Todd M. Friedman Featured on CBS News: The Uber 1099 Identity Theft Crisis", c:"Firm News", d:"March 11, 2026", img:IMG.todd},
+  {t:"How to Prepare for Your Free Employment Attorney Consultation", c:"Employment Law", d:"March 5, 2026", img:IMG.work},
+  {t:"Reporting Workplace Violations: A Guide to Whistleblower Protections", c:"Employment Law", d:"January 29, 2026", img:IMG.chi}
+];
+const grid = document.getElementById('postGrid');
+const noResults = document.getElementById('noResults');
+const render = (list) => {
+  grid.innerHTML = list.map((p,i) => `
+    <article class="post-card" style="animation:fadeSlide .5s var(--ease) ${i*0.05}s backwards">
+      <div class="pc-media"><img src="${p.img}" alt="" loading="lazy"></div>
+      <div class="pc-body">
+        <span class="cat-tag">${p.c}</span>
+        <h3><a href="#">${p.t}</a></h3>
+        <div class="pc-date"><span>${p.d}</span><span class="rm">Read <span>→</span></span></div>
+      </div>
+    </article>`).join('');
+  noResults.style.display = list.length ? 'none' : 'block';
+};
+render(posts);
+
+let activeCat = 'all', query = '';
+const apply = () => render(posts.filter(p =>
+  (activeCat === 'all' || p.c === activeCat) &&
+  p.t.toLowerCase().includes(query)
+));
+document.querySelectorAll('#blogFilters .chip').forEach(chip => chip.addEventListener('click', () => {
+  document.querySelectorAll('#blogFilters .chip').forEach(c => c.classList.remove('active'));
+  chip.classList.add('active');
+  activeCat = chip.dataset.cat;
+  apply();
+}));
+document.getElementById('blogSearch').addEventListener('input', e => { query = e.target.value.toLowerCase().trim(); apply(); });
+
+// Pagination demo
+document.querySelectorAll('.page-btn').forEach(b => b.addEventListener('click', () => {
+  if (b.disabled || b.classList.contains('wide')) return;
+  document.querySelectorAll('.page-btn').forEach(x => x.classList.remove('active'));
+  b.classList.add('active');
+  scrollTo({top:document.getElementById('postGrid').offsetTop - 140, behavior:'smooth'});
+}));
+</script>
+</body>
+</html>
