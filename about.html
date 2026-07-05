@@ -131,8 +131,8 @@ section{padding:96px 0}
 .logo-wall{background:var(--white);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:56px 0}
 .logo-wall .lw-label{text-align:center;font-family:var(--font-display);font-weight:700;font-size:.75rem;letter-spacing:.26em;text-transform:uppercase;color:var(--slate);margin-bottom:38px}
 .lw-grid{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:20px 56px}
-.lw-grid img{height:64px;width:auto;filter:brightness(0) opacity(.62);transition:filter .35s,transform .35s var(--ease)}
-.lw-grid img:hover{filter:brightness(0) opacity(1);transform:translateY(-4px)}
+.lw-grid img{height:64px;width:auto;filter:grayscale(1);opacity:.78;transition:filter .35s,opacity .35s,transform .35s var(--ease)}
+.lw-grid img:hover{filter:none;opacity:1;transform:translateY(-4px)}
 .lw-grid img.tall{height:86px}
 /* Zig-zag feature rows */
 .zig{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--line);margin-top:56px}
