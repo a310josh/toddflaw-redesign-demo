@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="theme-color" content="#00152e">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Employment Law | Law Offices of Todd M. Friedman, P.C.</title>
 <meta name="description" content="Employment lawyers protecting workers in California, Ohio, Illinois, and Pennsylvania. Wrongful termination, discrimination, harassment, wage disputes.">
@@ -63,7 +64,8 @@ section{padding:96px 0}
 .header.scrolled{background:var(--navy-deep);box-shadow:0 8px 32px rgba(0,10,25,.35)}
 .header.scrolled .header-inner{padding:11px 32px}
 .header.solid{background:var(--navy-deep)}
-.logo img{height:44px;width:auto;transition:height .35s var(--ease)}
+.logo{flex-shrink:0;display:block}
+.logo img{height:44px;width:auto;max-width:none;object-fit:contain;transition:height .35s var(--ease)}
 .header.scrolled .logo img{height:36px}
 .nav{display:flex;align-items:center;gap:6px}
 .nav > li{position:relative}
@@ -85,7 +87,9 @@ section{padding:96px 0}
 .hamburger.open span:nth-child(1){transform:translateY(8.5px) rotate(45deg)}
 .hamburger.open span:nth-child(2){opacity:0}
 .hamburger.open span:nth-child(3){transform:translateY(-8.5px) rotate(-45deg)}
-.mobile-nav{position:fixed;inset:0;background:var(--navy-deep);z-index:200;display:flex;flex-direction:column;justify-content:center;padding:48px;transform:translateX(100%);transition:transform .5s var(--ease)}
+.mobile-nav{position:fixed;inset:0;background:var(--navy-deep);z-index:200;display:flex;flex-direction:column;justify-content:center;padding:48px 28px;transform:translateX(100%);transition:transform .5s var(--ease)}
+.mobile-close{position:absolute;top:18px;right:20px;width:48px;height:48px;background:none;border:2px solid rgba(255,255,255,.3);color:var(--white);font-size:1.15rem;cursor:pointer;display:grid;place-items:center;transition:all .3s var(--ease)}
+.mobile-close:hover{border-color:var(--gold);color:var(--gold);transform:rotate(90deg)}
 .mobile-nav.open{transform:translateX(0)}
 .mobile-nav a{color:var(--white);font-family:var(--font-display);font-weight:800;font-size:1.6rem;text-transform:uppercase;padding:12px 0;opacity:0;transform:translateY(20px);transition:all .4s var(--ease)}
 .mobile-nav.open a{opacity:1;transform:translateY(0)}
@@ -93,7 +97,7 @@ section{padding:96px 0}
 /* Page hero with imagery */
 .page-hero{position:relative;background:var(--navy-deep);padding:190px 0 90px;overflow:hidden}
 .page-hero .hero-bg{position:absolute;inset:0}
-.page-hero .hero-bg img{width:100%;height:100%;object-fit:cover;filter:saturate(.7)}
+.page-hero .hero-bg img{width:100%;height:100%;object-fit:cover;filter:saturate(1.06) contrast(1.02)}
 .page-hero .hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,rgba(0,21,46,.94) 25%,rgba(0,21,46,.72) 60%,rgba(0,21,46,.45))}
 .page-hero .container{position:relative;z-index:3}
 .breadcrumb{font-size:.82rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:22px}
@@ -138,9 +142,9 @@ section{padding:96px 0}
 .zig{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--line);margin-top:56px}
 .zig-row{display:contents}
 .zig-media{position:relative;min-height:340px;overflow:hidden}
-.zig-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(.75);transition:transform 1.2s var(--ease),filter .6s}
-.zig-media::after{content:"";position:absolute;inset:0;background:linear-gradient(15deg,rgba(0,31,66,.42),transparent 55%)}
-.zig-body:hover ~ .zig-media img, .zig-media:hover img{transform:scale(1.045);filter:saturate(1)}
+.zig-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(1.05) contrast(1.02);transition:transform 1.2s var(--ease)}
+.zig-media::after{content:"";position:absolute;inset:0;background:linear-gradient(15deg,rgba(0,31,66,.38),transparent 55%)}
+.zig-body:hover ~ .zig-media img, .zig-media:hover img{transform:scale(1.045)}
 .zig-body{padding:56px;display:flex;flex-direction:column;justify-content:center;background:var(--white);border-top:1px solid var(--line)}
 .zig-row:first-of-type .zig-body{border-top:none}
 .zig-body h3{font-size:1.5rem;font-weight:800;margin-bottom:12px}
@@ -254,7 +258,7 @@ section{padding:96px 0}
 .ox-item .ox-tel{grid-row:1/3;font-family:var(--font-display);font-weight:700;color:rgba(255,255,255,.7);font-size:.95rem;transition:color .3s}
 .ox-item.active .ox-tel{color:var(--white)}
 .ox-media{position:relative;overflow:hidden;min-height:400px}
-.ox-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.06);transition:opacity .7s var(--ease),transform 6s linear;filter:saturate(.75)}
+.ox-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.06);transition:opacity .7s var(--ease),transform 6s linear;filter:saturate(1.05)}
 .ox-media img.active{opacity:1;transform:scale(1)}
 .ox-media::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--navy-deep) 0%,rgba(0,21,46,.25) 40%,rgba(0,21,46,.05))}
 /* Footer */
@@ -280,23 +284,50 @@ section{padding:96px 0}
   .stats.light .stat{border-top-color:var(--line)}
   .cta-inner{grid-template-columns:1fr;gap:56px}
   .footer-grid{grid-template-columns:1fr 1fr}
-  .zig{grid-template-columns:1fr}
-  .zig-media{min-height:240px}
+  /* Zig: each row becomes its own card, image ALWAYS first */
+  .zig{display:block;border:none;background:none}
+  .zig-row{display:grid;grid-template-columns:1fr;border:1px solid var(--line);margin-bottom:20px;overflow:hidden}
+  .zig-media{order:-1;min-height:230px;position:relative}
+  .zig-body{border-top:none;padding:30px 24px 36px}
   .pa-row{grid-template-columns:1fr 1fr}
   .docket-grid{grid-template-columns:1fr 1fr}
   .offices-x{grid-template-columns:1fr}
-  .ox-media{min-height:300px;order:-1}
-  .ox-list{padding:64px 24px}
+  .ox-media{min-height:260px;order:-1}
+  .ox-list{padding:56px 24px 64px}
   .review{flex-basis:300px}
 }
 @media(max-width:640px){
-  section{padding:64px 0}
+  section{padding:60px 0}
+  .container{padding:0 20px}
+  .header-inner{padding:14px 18px}
+  .header.scrolled .header-inner{padding:10px 18px}
+  .logo img{height:34px}
+  .header.scrolled .logo img{height:30px}
+  .header-cta{gap:10px}
+  .btn-header{padding:11px 14px;font-size:.7rem;letter-spacing:.04em}
   .form-grid,.footer-grid,.pa-row,.docket-grid{grid-template-columns:1fr}
-  .page-hero{padding:150px 0 64px}
-  .verdict{grid-template-columns:1fr;gap:16px}
-  .spotlight{padding:44px 28px}
+  .docket{min-height:180px}
+  .docket.feature{grid-row:auto}
+  .docket.feature .d-amt{font-size:2.6rem}
+  .page-hero{padding:140px 0 60px}
+  .verdict{grid-template-columns:1fr;gap:16px;padding:28px 22px}
+  .spotlight{padding:44px 22px 36px}
   .spotlight blockquote,.spotlight .s-meta{margin-left:0}
-  .zig-body{padding:36px 26px}
+  .spotlight .s-meta{flex-wrap:wrap}
+  .zig-body{padding:28px 20px 34px}
+  .stat{padding:32px 24px}
+  .form-card{padding:32px 22px}
+  .ox-list{padding:48px 20px 56px}
+  .ox-item{grid-template-columns:1fr;padding:20px 14px}
+  .ox-item .ox-tel{grid-row:auto;margin-top:4px}
+  .footer{padding-top:56px}
+  .logo-wall{padding:44px 0}
+  .lw-grid{gap:18px 32px}
+  .lw-grid img{height:48px}
+  .lw-grid img.tall{height:66px}
+  .marquee-track span{font-size:.85rem;padding:0 22px;gap:22px}
+  .lead{font-size:1.02rem}
+  .to-top{bottom:20px;right:20px;width:46px;height:46px}
 }
 
 </style>
@@ -339,7 +370,8 @@ section{padding:96px 0}
 .office-panel > div > p{color:var(--slate)}
 .office-card{background:var(--white);border:1px solid var(--line);overflow:hidden}
 .office-card .oc-img{height:170px;overflow:hidden;position:relative}
-.office-card .oc-img img{width:100%;height:100%;object-fit:cover;filter:saturate(.78);transition:transform 1s var(--ease)}
+.office-card .oc-img::after{content:"";position:absolute;inset:0;background:linear-gradient(160deg,rgba(0,31,66,.28),rgba(241,195,14,.1) 85%);pointer-events:none}
+.office-card .oc-img img{width:100%;height:100%;object-fit:cover;filter:saturate(1.05);transition:transform 1s var(--ease)}
 .office-card:hover .oc-img img{transform:scale(1.05)}
 .office-card .oc-body{padding:26px 28px 30px}
 .office-card .oc-label{font-family:var(--font-display);font-weight:700;font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:12px}
@@ -393,6 +425,7 @@ section{padding:96px 0}
   </div>
 </header>
 <nav class="mobile-nav" id="mobileNav">
+  <button class="mobile-close" aria-label="Close menu">✕</button>
   <a href="index.html">Home</a><a href="about.html">About</a><a href="employment-law.html">Practice Areas</a><a href="blog.html">Blog</a><a href="#contact" class="gold">Free Case Evaluation</a>
 </nav>
 
@@ -582,7 +615,7 @@ section{padding:96px 0}
                   <p>Pennsylvania employees have important rights under state and federal law, including protections against discrimination, retaliation, and wrongful termination. We deliver personalized, strategic representation backed by decades of experience.</p>
                 </div>
                 <div class="office-card">
-                  <div class="oc-img"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Main_Street_WB_at_Town_Square_Place_King_of_Prussia_Town_Center.jpeg/1920px-Main_Street_WB_at_Town_Square_Place_King_of_Prussia_Town_Center.jpeg" alt="King of Prussia town center" loading="lazy"></div>
+                  <div class="oc-img"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Philadelphia_skyline_20240528_(cropped).jpg?width=1920" alt="King of Prussia town center" loading="lazy"></div>
                   <div class="oc-body">
                     <div class="oc-label">King of Prussia, PA Office</div>
                     <address>840 First Ave, Suite 400<br>King of Prussia, PA 19406</address>
@@ -727,7 +760,7 @@ section{padding:96px 0}
     <img class="active" src="https://toddflaw.com/wp-content/uploads/2021/02/view-of-los-angeles-skyline-at-sunset-PW3TEFM.jpg" alt="Los Angeles">
     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Cleveland_skyline_from_Lakewood_Park%2C_January_2026.jpg/1920px-Cleveland_skyline_from_Lakewood_Park%2C_January_2026.jpg" alt="Cleveland" loading="lazy">
     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Chicago_River_ferry_b.jpg/1920px-Chicago_River_ferry_b.jpg" alt="Chicago" loading="lazy">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Main_Street_WB_at_Town_Square_Place_King_of_Prussia_Town_Center.jpeg/1920px-Main_Street_WB_at_Town_Square_Place_King_of_Prussia_Town_Center.jpeg" alt="King of Prussia" loading="lazy">
+    <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Philadelphia_skyline_20240528_(cropped).jpg?width=1920" alt="King of Prussia" loading="lazy">
   </div>
 </section>
 
@@ -804,9 +837,12 @@ section{padding:96px 0}
       document.body.style.overflow = open ? 'hidden' : '';
       mobileNav.querySelectorAll('a').forEach((a,i) => a.style.transitionDelay = open ? (0.1 + i*0.06)+'s' : '0s');
     });
-    mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    const closeNav = () => {
       mobileNav.classList.remove('open'); hamburger.classList.remove('open'); document.body.style.overflow='';
-    }));
+    };
+    mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', closeNav));
+    mobileNav.querySelector('.mobile-close')?.addEventListener('click', closeNav);
+    addEventListener('keydown', e => { if (e.key === 'Escape') closeNav(); });
   }
 
   // Reveal on scroll
