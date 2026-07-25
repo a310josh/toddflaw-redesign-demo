@@ -16,7 +16,7 @@ Design reference (approved): https://toddflaw-redesign-demo.vercel.app · Repo: 
 
 | # | Template | Prototype source | Used by |
 |---|---|---|---|
-| T1 | Home (hero video rotator, logo wall, zig practice, dockets, review rail, office explorer) | `index.html` | `/` |
+| T1 | Home (hero video rotator with ORIGINAL b-roll `2021/03/bdv_tflaw_herovid_v1.mp4`, logo wall, zig practice, **video feature section playing `2025/03/Consumer-Rights-Attorney-Todd-M.-Friedman-1.mp4` with VideoObject schema**, dockets, review rail, office explorer) | `index.html` | `/` |
 | T2 | Interior/Practice (hero image, stat band, TOC scroll-spy, sub-cards, stepper, verdict stamps, spotlight, office tabs, FAQ accordion) | `employment-law.html` | all practice + sub-practice pages |
 | T3 | Attorney profile | `attorney-todd-michael-friedman.html` | `/about/…` attorney pages (team-sitemap) |
 | T4 | Blog archive (filter chips = WP categories, search, pagination) | `blog.html` | `/blog/` |

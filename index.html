@@ -358,6 +358,13 @@ section{padding:96px 0}
 .city-tab.active .ct-progress{animation:ctFill 2.5s linear forwards}
 @keyframes ctFill{from{width:0}to{width:100%}}
 .hero.paused .city-tab.active .ct-progress{animation-play-state:paused}
+/* Video feature */
+.video-feature{background:var(--white)}
+.vf-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:72px;align-items:center}
+.vf-player{position:relative}
+.vf-player video{width:100%;display:block;background:var(--navy-deep);aspect-ratio:16/9;object-fit:cover}
+.vf-player::after{content:"";position:absolute;top:20px;left:20px;right:-20px;bottom:-20px;border:2px solid var(--gold);z-index:-1}
+@media(max-width:1024px){.vf-grid{grid-template-columns:1fr;gap:44px}.vf-player::after{display:none}}
 /* Sections */
 .split{display:grid;grid-template-columns:1fr 1fr;grid-template-areas:"img head" "img body";gap:0 80px;align-items:start}
 .split-head{grid-area:head}
@@ -445,7 +452,7 @@ section{padding:96px 0}
 <section class="hero on-dark grain" id="hero">
   <div class="hero-media" id="heroMedia">
     <video muted loop playsinline preload="auto" data-city="0" poster="https://toddflaw.com/wp-content/uploads/2021/02/view-of-los-angeles-skyline-at-sunset-PW3TEFM.jpg">
-      <source src="https://toddflaw.com/wp-content/uploads/2025/03/Consumer-Rights-Attorney-Todd-M.-Friedman-1.mp4" type="video/mp4">
+      <source src="https://toddflaw.com/wp-content/uploads/2021/03/bdv_tflaw_herovid_v1.mp4" type="video/mp4">
     </video>
     <img data-city="1" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Cleveland_skyline_from_Lakewood_Park%2C_January_2026.jpg/1920px-Cleveland_skyline_from_Lakewood_Park%2C_January_2026.jpg" alt="Cleveland skyline">
     <img data-city="2" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Chicago_River_ferry_b.jpg/1920px-Chicago_River_ferry_b.jpg" alt="Chicago river and skyline">
@@ -565,6 +572,26 @@ section{padding:96px 0}
         <p class="lead" style="margin:24px 0 18px">Todd became a lawyer more than 20 years ago because he got tired of seeing regular, hard-working people get taken advantage of by the system.</p>
         <p style="color:var(--slate);margin-bottom:36px">Employers, creditors, negligent drivers, and telemarketers seem to have all the power. Honest people face a system too large and complicated to fight alone. At the Law Offices of Todd M. Friedman, we level the playing field and fight back for you.</p>
         <a href="attorney-todd-michael-friedman.html" class="btn btn-solid">Meet Todd <span class="arrow">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO FEATURE -->
+<section class="video-feature">
+  <div class="container">
+    <div class="vf-grid">
+      <div class="reveal">
+        <span class="eyebrow">Watch</span>
+        <h2 class="h-lg" style="margin:20px 0 22px">Your rights,<br>in two minutes</h2>
+        <p class="lead" style="margin-bottom:18px">Todd explains what consumer protection law actually covers, and when a call to our office is worth your time.</p>
+        <p style="color:var(--slate);margin-bottom:32px">More plain-English explainers on employment law, credit report errors, and class actions live in our Video Center.</p>
+        <a href="#" class="btn btn-solid">Visit the Video Center <span class="arrow">→</span></a>
+      </div>
+      <div class="vf-player reveal">
+        <video controls preload="none" playsinline poster="https://toddflaw.com/wp-content/uploads/2025/03/Todd-Friedman-Practice-Area.jpg">
+          <source src="https://toddflaw.com/wp-content/uploads/2025/03/Consumer-Rights-Attorney-Todd-M.-Friedman-1.mp4" type="video/mp4">
+        </video>
       </div>
     </div>
   </div>
