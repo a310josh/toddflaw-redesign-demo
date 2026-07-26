@@ -18,7 +18,7 @@ Design reference (approved): https://toddflaw-redesign-demo.vercel.app · Repo: 
 |---|---|---|---|
 | T1 | Home (hero video rotator with ORIGINAL b-roll `2021/03/bdv_tflaw_herovid_v1.mp4`, logo wall, zig practice, **video feature section playing `2025/03/Consumer-Rights-Attorney-Todd-M.-Friedman-1.mp4` with VideoObject schema**, dockets, review rail, office explorer) | `index.html` | `/` |
 | T2 | Interior/Practice (hero image, stat band, TOC scroll-spy, sub-cards, stepper, verdict stamps, spotlight, office tabs, FAQ accordion) | `employment-law.html` | all practice + sub-practice pages |
-| T3 | Attorney profile | `attorney-todd-michael-friedman.html` | `/about/…` attorney pages (team-sitemap) |
+| T3 | Attorney profile. **Graceful degradation (Josh 7/26):** Awards & Badges card renders only when badge images exist; Super Lawyers timeline only when selections exist; thin-highlight attorneys lead the sidebar with Practice Focus, bar admissions, education. Same layout and vibe regardless of highlight count; never pad with invented recognitions. | `attorney-todd-michael-friedman.html` | `/about/…` attorney pages (team-sitemap) |
 | T4 | Blog archive (filter chips = WP categories, search, pagination) | `blog.html` | `/blog/` |
 | T5 | Blog post (new: T2 typography + matched verdict stamp + share + CTA) | derive | ~800 posts via ISR |
 | T6 | About/team grid | `about.html` | `/about/` |
@@ -48,7 +48,7 @@ Validation content (case results, testimonials) lives as JSON collections in `/c
 
 - Sticky mobile call bar (call + free evaluation) appearing after 600px scroll on all pages.
 - Share: native `navigator.share` button on posts/videos with clipboard fallback; no third-party share scripts.
-- Free case evaluation form on every template (posts to a `/api/lead` stub; wire Gravity Forms/CRM later; include honeypot).
+- Free case evaluation form on every template (posts to a `/api/lead` stub; wire Gravity Forms/CRM later; include honeypot). Required fields per Josh 7/26: Name, Phone, Email, State, **Type of Case (Employment Law / Consumer Protection / Personal Injury / Lemon Law / Business Litigation / Other)**, Contact Preference (placeholder "Select...", never long text in half-width selects), Case Description.
 - Mobile-first: build at 390px first; the tmf.css v2 media rules are the reference. **Definition of done per page includes a 390px screenshot in the PR.**
 
 ## 6. Tracking
@@ -70,3 +70,21 @@ Validation content (case results, testimonials) lives as JSON collections in `/c
 
 - One PR per batch to `toddflaw-next`, preview deploy link + 390px screenshots in PR description. Orchestrator (Claude/Josh) reviews against this spec.
 - No em/en dashes in copy. One accent color (gold). No new fonts, colors, or corner radii. When the spec and taste conflict, ask in #hermes-channel before building.
+
+## 9. Content Engine (supersedes per-file pages for Batches 3-6; decided 7/26)
+
+One dynamic catch-all route replaces ~100 individual page files:
+- `app/[...slug]/page.js` with `generateStaticParams` built from a full WP pages crawl at build time: fetch `/wp-json/wp/v2/pages?per_page=100&page=N&_fields=id,slug,parent,title,excerpt,modified` (paginate to completion), compose each page's FULL path by walking the `parent` chain, and emit params for every path in inventory.csv batches 3-6 (plus any new WP page whose path nests under a known hub).
+- Rendering = T2-lite (hero + styled WP content via `rewriteInternalLinks` + breadcrumbs from the parent chain + FAQPage schema on question-styled H2s only + LeadForm CTA). Location hubs (`/los-angeles/`, `/chicago/`, `/cleveland/`, `/prussia/`) keep dedicated T11 files and win over the catch-all.
+- Batch 2's 11 static files migrate INTO the engine (delete the per-file routes; verify URL parity before/after). Batches 3-6 then become verification passes (spot-check 3 pages per batch at 390px + parity check of every inventory URL returning 200), not build passes.
+- Explicit 404 for paths not in the allowlist (inventory + WP-derived); never render arbitrary slugs.
+
+## 10. Headless WordPress configuration + cutover
+
+**Now (pre-cutover):**
+- Next: `app/api/revalidate/route.js` (in repo) — POST `{path, secret}`; verifies `REVALIDATE_SECRET` env; calls `revalidatePath(path)`. Set env in Vercel.
+- WP (Hostinger): install mu-plugin `tmf-headless-revalidate.php` (in reference repo) — on `save_post` for posts/pages, POSTs the permalink path to `NEXT_REVALIDATE_URL` with the shared secret. Publish-to-live latency drops from 1h ISR to seconds. Needs wp-admin or Hostinger file manager (Josh or Hostinger connector).
+- Rank Math titles/descriptions: expose via REST (`rank_math_title`/`rank_math_description` meta) or fall back to WP title + template description (current behavior). Flag per-page gaps in PR notes rather than inventing.
+
+**Cutover sequence (after Batch 7 + parity):**
+1. Hostinger: add `cms.toddflaw.com` as site alias + SSL. 2. Cloudflare: `cms` record → Hostinger origin (added ahead of time; no traffic impact). 3. WP `WP_HOME`/`WP_SITEURL` → `https://cms.toddflaw.com`; verify wp-admin + REST on cms host. 4. `toddflaw-next` env `WP_BASE` → cms origin; add `next.config` rewrite `/wp-content/*` → `https://cms.toddflaw.com/wp-content/*` (post-body media keeps resolving). 5. Vercel: add domain `toddflaw.com` + `www`. 6. Cloudflare: apex/www → Vercel (DNS-only). 7. Verify: 20-URL smoke list, forms, sitemap, robots, GSC fetch. 8. Rollback = revert apex/www records (minutes). Block search indexing of `cms.` (robots + `X-Robots-Tag`).
